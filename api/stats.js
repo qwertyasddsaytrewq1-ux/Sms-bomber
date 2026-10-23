@@ -5,19 +5,10 @@ const CORS = {
 };
 
 const ENDPOINT_IDS = [
-  'zomato','swiggy','dominos','pizzahut','kfc','mcdonalds','box8','faasos','behrouz',
-  'flipkart','myntra','nykaa','ajio','meesho','snapdeal','tatacliq','firstcry',
-  'lenskart','pepperfry','croma','reliancedigital',
-  'bigbasket','blinkit','zepto','jiomart','licious','countrydelight',
-  'ola','rapido','dunzo','porter','blusmart',
-  'paytm','mobikwik','freecharge','cred','jupiter','fi','bharatpe',
-  'makemytrip','goibibo','cleartrip','yatra','ixigo','redbus','oyo','treebo',
-  'bookmyshow','pvrcinemas','inox','zee5','sonyliv','gaana',
-  'practo','pharmeasy','netmeds','apollopharmacy','cultfit',
-  'unacademy','vedantu','toppr',
-  'urbancompany','nobroker','livspace','housejoy',
-  'cars24','cardekho','spinny','policybazaar','acko','godigit',
-  'shaadi','jeevansathi','bharatmatrimony','aisle'
+  'oyo', 'delhivery', 'confirmtkt', 'magicbricks', 'myupchar', 'makaan',
+  'netmeds', 'lenskart', 'practo', 'goibibo', 'apollopharmacy', 'grab',
+  'tllms', 'realestateindia', 'aala', 'flipkart_form',
+  'goomo', 'pizzahut', 'ajio', 'altbalaji', 'olx'
 ];
 
 export default async function handler(req, res) {
