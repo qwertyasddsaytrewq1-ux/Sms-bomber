@@ -165,9 +165,3 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 
 .log::-webkit-scrollbar { width: 6px; }
 .log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-#probeBtn { border-color: #4a90e2; color: #4a90e2; flex: 0 0 auto; padding: 12px 16px; }
-#probeBtn:hover:not(:disabled) {
-  background: #4a90e2;
-  color: var(--bg);
-  box-shadow: 0 0 16px rgba(74, 144, 226, 0.5);
-}
