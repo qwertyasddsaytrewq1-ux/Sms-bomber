@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Bomber // Console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="terminal">
+  <header>
+    <h1>SMS BOMBER<span class="cursor">_</span></h1>
+    <p class="sub">otp endpoint hammer · v1.3 · vercel</p>
+  </header>
+
+  <section class="panel" id="bombPanel">
+    <label>Target Number (10 digits, no +91)</label>
+    <input id="target" type="tel" placeholder="9876543210" maxlength="10" autocomplete="off">
+
+    <div class="grid">
+      <div>
+        <label>Requests Per Endpoint</label>
+        <input id="perEndpoint" type="number" value="5" min="1" max="100">
+      </div>
+      <div>
+        <label>Delay (ms)</label>
+        <input id="delay" type="number" value="250" min="0" max="10000">
+      </div>
+      <div>
+        <label>Concurrent Workers</label>
+        <input id="workers" type="number" value="4" min="1" max="20">
+      </div>
+      <div>
+        <label>Endpoints</label>
+        <input id="endpointCount" type="text" value="loading…" disabled>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="startBtn">START BOMBING</button>
+      <button id="stopBtn" disabled>STOP</button>
+    </div>
+  </section>
+
+  <section class="panel" id="statsPanel">
+    <div class="stats">
+      <div><span id="statSent">0</span><small>sent</small></div>
+      <div><span id="statFail">0</span><small>failed</small></div>
+      <div><span id="statActive">0</span><small>active</small></div>
+      <div><span id="statTime">0s</span><small>elapsed</small></div>
+    </div>
+  </section>
+
+  <section class="panel log-panel" id="logPanel">
+    <div class="log-header">
+      <span>LIVE LOG</span>
+      <button id="clearLog">clear</button>
+    </div>
+    <div id="log" class="log"></div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
